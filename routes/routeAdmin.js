@@ -6,7 +6,7 @@
     
     
     Router.post("/", morgan(), admin.create)
-    Router.post("/loginadmin", morgan(), admin.login)
+    Router.post("/login", morgan(), admin.login)
   
    
 

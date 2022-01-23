@@ -24,7 +24,7 @@ exports.create = (req, res) => {
 
 };
 
-// // Retrieve all admin from the database.
+// Auth
 exports.login = async(req, res) => {
     try{
         const adminData = {

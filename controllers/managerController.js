@@ -105,3 +105,27 @@ exports.create = (req, res) => {
           message: "error deleting"});
       });
   };
+  // authentification
+  exports.login = async(req, res) => {
+    try{
+        const managerData = {
+            email: req.body.email,
+            password: req.body.password
+        }
+        // check if exists
+         const managerFind = await Manager.findOne({email: managerData.email, password: managerData.password})
+         if(managerFind){
+            //call token creation
+            console.log(managerFind)
+              tokencreate.tokenCreation(managerFind, req, res)
+              res.status(200).json((managerFind));
+         }
+         else{
+             res.status(404).json({message: "Manager not found"})
+         }
+         
+    }catch(err){
+        res.json({ message: err.message });
+    }
+    
+};
