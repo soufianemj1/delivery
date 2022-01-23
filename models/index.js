@@ -6,5 +6,7 @@ db.mongoose = mongoose;
 db.url = dbConfig.url;
 db.admin = require("./adminmodel.js")(mongoose);
 db.manager = require("./managermodel.js")(mongoose);
+db.driver = require("./drivermodel.js")(mongoose);
+db.delivery = require("./deliverymodel.js")(mongoose);
 
 module.exports = db;

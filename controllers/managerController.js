@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const db = require("../models");
 const Manager = db.manager;
 const tokencreate = require("../helpers/tokens");
-const { manager } = require("../models");
 
 //create and save a new manager
 exports.create = (req, res) => {
@@ -28,7 +27,7 @@ exports.create = (req, res) => {
   //find all managers
   exports.findAll = (req, res) => {
     
-    manager.find()
+    Manager.find()
       .then(data => {
         res.send(data);
       })
@@ -41,16 +40,16 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    manager.findById(id)
+    Manager.findById(id)
       .then(data => {
         if (!data)
-          res.status(404).send({ message: "Not found Tutorial with id " + id });
+          res.status(404).send({ message: "Not found"});
         else res.send(data);
       })
       .catch(err => {
         res
           .status(500)
-          .send({ message: err + id });
+          .send({ message: err });
       });
   };
 
@@ -69,7 +68,7 @@ exports.create = (req, res) => {
         email: req.body.email,
         password: req.body.password
     }
-    manager.findByIdAndUpdate(id, data, { useFindAndModify: false })
+    Manager.findByIdAndUpdate(id, data, { useFindAndModify: false })
       .then(data => {
         if (!data) {
           res.status(404).send({
@@ -79,7 +78,7 @@ exports.create = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Tutorial" 
+          message: "Error updating manager" 
         });
       });
   };
@@ -88,7 +87,7 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
     
-    manager.findByIdAndRemove(id)
+    Manager.findByIdAndRemove(id)
       .then(data => {
         if (!data) {
           res.status(404).send({

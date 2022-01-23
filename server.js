@@ -39,6 +39,12 @@ const adminroute = require("./routes/routeAdmin");
 app.use("/api/admin", adminroute);
 const managerroute = require("./routes/routeManager");
 app.use("/api/manager", managerroute);
+const driverroute = require("./routes/routeDriver");
+app.use("/api/driver", driverroute);
+const deliveryroute = require("./routes/routeDelivery");
+app.use("/api/delivery", deliveryroute);
+
+
 
 
 
