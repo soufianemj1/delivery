@@ -3,20 +3,17 @@ const db = require("../models");
 const Prime = db.prime;
 
 exports.findAll = (req, res) => {
+  const id = req.body.id;
     
-    Prime.find().populate('driver_id').populate('delivery_id')
+    Prime.find({driver_id : id}).populate('driver_id').populate('delivery_id')
       .then(data => {
-          var distance = []
+          var distance = 0;
           data.forEach(element => {
-              distance.push(parseInt(element.delivery_id.distance))
-              let distanceprime = 0
-              for(let i = 0; i<distance.length; i++){
-                distanceprime += distance[i]
-                    
-              }
+              distance += parseInt(element.delivery_id.distance)
               
-             
           });
+          console.log(distance);   
+          
          
    
 

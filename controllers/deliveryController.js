@@ -1,6 +1,8 @@
 const axios = require("axios")
 const db = require("../models");
+const Mail = require("../helpers/mail.js");
 const Delivery = db.delivery;
+const Driver = db.driver;
 const Prime = db.prime;
 
 
@@ -33,6 +35,45 @@ exports.create = async (req, res) => {
       .catch(err=>{
           res.status(500).send({message: err.message})
       })
+      if (parseInt(delivery.weight) <= 200){
+        Driver.find({vehicule: "car"})
+        .then(data => {
+          data.forEach(element => {
+            Mail.sendMail(element.email)
+          });
+
+        })
+        .catch(err => {
+          res.status(500).send({message: err.message});
+        });
+      }
+      if (parseInt(delivery.weight) <= 800){
+        Driver.find({vehicule: "truck"})
+        .then(data => {
+          data.forEach(element => {
+            Mail.sendMail(element.email)
+          });
+
+        })
+        .catch(err => {
+          res.status(500).send({message: err.message});
+        });
+      }
+      if (parseInt(delivery.weight) <= 200){
+        Driver.find({vehicule: "big truck"})
+        .then(data => {
+          data.forEach(element => {
+            Mail.sendMail(element.email)
+          });
+
+        })
+        .catch(err => {
+          res.status(500).send({message: err.message});
+        });
+      }
+      
+      
+
   
   };
 
