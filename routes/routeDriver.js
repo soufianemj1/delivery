@@ -6,7 +6,7 @@ const drivermiddleware = require("../middleware/driverMware")
 
 
 Router.post("/create", drivermiddleware, morgan(), driver.create)
-Router.get("/findall", drivermiddleware,morgan(), driver.findAll)
+Router.get("/findall",drivermiddleware,morgan(), driver.findAll)
 Router.put("/update/:id",drivermiddleware,morgan(),driver.update)
 Router.delete("/delete/:id",drivermiddleware,morgan(),driver.delete)
 Router.post("/login",morgan(),driver.login)

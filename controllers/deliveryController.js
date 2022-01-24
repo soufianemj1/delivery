@@ -1,6 +1,7 @@
 const axios = require("axios")
 const db = require("../models");
 const Delivery = db.delivery;
+const Prime = db.prime;
 
 
 // create delivery
@@ -92,6 +93,19 @@ exports.create = async (req, res) => {
             message: "Error updating dlivery" 
           });
         });
+      
+      const prime = new Prime({
+        driver_id: req.body.driver_id,
+        delivery_id: req.params.id,
+      })
+      prime
+      .save(prime)
+      .then(data=>{
+          res.send(data)
+      })
+      .catch(err=>{
+          res.status(500).send({message: err.message})
+      })
     };
     
 

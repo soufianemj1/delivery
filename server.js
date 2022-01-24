@@ -43,6 +43,8 @@ const driverroute = require("./routes/routeDriver");
 app.use("/api/driver", driverroute);
 const deliveryroute = require("./routes/routeDelivery");
 app.use("/api/delivery", deliveryroute);
+const primeroute = require("./routes/routePrime");
+app.use("/api/prime", primeroute);
 
 
 

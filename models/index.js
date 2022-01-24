@@ -8,5 +8,6 @@ db.admin = require("./adminmodel.js")(mongoose);
 db.manager = require("./managermodel.js")(mongoose);
 db.driver = require("./drivermodel.js")(mongoose);
 db.delivery = require("./deliverymodel.js")(mongoose);
+db.prime = require("./primemodel.js")(mongoose);
 
 module.exports = db;
