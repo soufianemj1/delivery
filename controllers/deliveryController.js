@@ -136,7 +136,7 @@ exports.create = async (req, res) => {
         });
       
       const prime = new Prime({
-        driver_id: req.body.driver_id,
+        driver_id: data.driver_id,
         delivery_id: req.params.id,
       })
       prime
